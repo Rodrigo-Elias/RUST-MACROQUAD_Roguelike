@@ -1,0 +1,8 @@
+[package]
+name = "aalg"
+version = "0.1.0"
+edition = "2024"
+authors = ["Rodd"]
+
+[dependencies]
+macroquad = "0.4.14"
