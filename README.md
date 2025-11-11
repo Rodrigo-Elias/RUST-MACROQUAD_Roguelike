@@ -52,10 +52,21 @@ const MAP_DATA: [&str; MAP_HEIGHT] = [
     "xoooxxxxxxxooosx",
     "xxxxx     xxxxxx",
 ];
-CaractereSignificadoTipo de Tile'x'MuroColisível'o'ChãoAndável's'SpawnAndável/Início do Jogador' 'Vazio (Espaço)Fora do Limite do Mapa (Colisível)⚙️ Como Rodar o ProjetoPré-requisitosRust: Você precisa ter o ambiente de desenvolvimento Rust instalado (incluindo cargo).Instale ou atualize: rustup updateAssets: O projeto depende de arquivos de imagem que devem ser colocados na pasta assets no diretório raiz do projeto.Estrutura de Assets NecessáriaCrie a seguinte estrutura de pastas e coloque os arquivos (se tiver) nos locais indicados:
+```
+```
+Significado dos caracteres:
+    'x' Muro (Com Colisão)
+    'o' Chão (Movimento permitido)
+    's' Spawn (Locais onde o jogador pode dar spawn, aleatorio)
+    'Vazio (Espaço)Fora do Limite do Mapa (Colisível)
 ```
 
-CaractereSignificadoTipo de Tile'x'MuroColisível'o'ChãoAndável's'SpawnAndável/Início do Jogador' 'Vazio (Espaço)Fora do Limite do Mapa (Colisível)⚙️ Como Rodar o ProjetoPré-requisitosRust: Você precisa ter o ambiente de desenvolvimento Rust instalado (incluindo cargo).Instale ou atualize: rustup updateAssets: O projeto depende de arquivos de imagem que devem ser colocados na pasta assets no diretório raiz do projeto.Estrutura de Assets NecessáriaCrie a seguinte estrutura de pastas e coloque os arquivos (se tiver) nos locais indicados:.
+⚙️ Como Rodar o ProjetoPré-requisitosRust: 
+
+1. Rust: Você precisa ter o ambiente de desenvolvimento Rust instalado (incluindo `cargo`).
+   * Instale ou atualize: `rustup update`
+
+2. Assets: O projeto depende de arquivos de imagem que devem ser colocados na pasta assets no diretório raiz do projeto. Em teoria se você esta copiando completamente esse projeto esses assets estarão já dentro dele:
 ```
 ├── Cargo.toml
 └── assets/
@@ -73,6 +84,6 @@ CaractereSignificadoTipo de Tile'x'MuroColisível'o'ChãoAndável's'SpawnAndáve
     └── sprites/
         └── Player.png
 ```
-Nota: Se você não possui os assets, o jogo irá falhar ao carregar. Certifique-se de ter todos os arquivos referenciados em GameAssets::load().
+Nota: Se você não possui os assets, o jogo irá falhar ao carregar. Certifique-se de ter todos os arquivos referenciados em `GameAssets::load()`.
 Compilação e ExecuçãoNo terminal, dentro do diretório do projeto:
 ```cargo run```
