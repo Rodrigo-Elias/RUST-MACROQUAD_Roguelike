@@ -3,46 +3,47 @@ Projeto Rust/Macroquad: Dungeon Crawler (Estados e Movimento)
 Este é um protótipo inicial de um jogo de RPG estilo Dungeon Crawler, construído em Rust utilizando a biblioteca de jogos Macroquad. O projeto foca na implementação de um sistema robusto de estados de jogo, gerenciamento de assets e mecânica de movimento baseada em tiles com colisão.
 
 🌟 Funcionalidades Implementadas
+🎮 Sistema de Estados de Jogo (GameState)
 
-O projeto inclui as seguintes funcionalidades principais:
+Splash: múltiplas telas de abertura com efeito fade in/out
 
-Sistema de Estados de Jogo (GameState):
+MainScreen: menu principal navegável
 
-Splash: Exibição de múltiplas telas de abertura com efeito de fade in/out.
+Load: tela de carregamento (placeholder)
 
-MainScreen: Menu principal navegável.
+InGame: onde a ação acontece
 
-Load: Tela de carregamento (placeholder).
+🧭 Menu Principal Funcional
 
-InGame: Onde a ação acontece.
+Navegação entre opções (“Novo Jogo”, “Carregar”, “Sair”) com as setas ↑/↓
 
-Menu Principal Funcional:
+Seleção confirmada com Enter ou Z
 
-Navegação entre opções ("Novo Jogo", "Carregar", "Sair") usando setas (↑/↓).
+A opção “Sair” encerra o programa
 
-Confirmação de seleção usando Enter ou Z.
+🧱 Movimento Clássico Baseado em Tiles
 
-A opção "Sair" encerra o programa.
+O jogador se move um tile por vez ao pressionar as setas do teclado
 
-Movimento Clássico Baseado em Tiles:
+Animação de movimento suave (duração: 0.15s, constante MOVE_DURATION)
 
-O jogador se move exatamente um tile por vez ao pressionar as setas do teclado.
+Câmera segue o jogador em tempo real
 
-Animação de movimento suave com duração de 0.15 segundos (MOVE_DURATION).
+🚧 Colisão com o Mapa
 
-A câmera acompanha o jogador em tempo real.
+O jogador não pode atravessar paredes ('x')
 
-Verificação de Colisão com o Mapa:
+Movimento bloqueado ao tentar sair dos limites do mapa
 
-O jogador não pode se mover para tiles marcados como muro ('x') ou para fora dos limites do mapa.
+🎥 Câmera Configurada (Macroquad)
 
-Configuração de Câmera (Macroquad):
+Implementação de uma Camera2D que acompanha o jogador
 
-Implementação de uma Camera2D para seguir o jogador, com a correção necessária para inverter o eixo Y, garantindo que o mundo seja renderizado na orientação matemática correta (Y cresce para cima).
+Correção aplicada para inverter o eixo Y, garantindo que o mundo seja renderizado de forma matemática correta (Y cresce para cima)
 
 🗺️ Estrutura do Mapa
 
-O mapa é definido em tempo de compilação através do array de strings MAP_DATA:
+O mapa é definido em tempo de compilação via MAP_DATA:
 
 const MAP_DATA: [&str; MAP_HEIGHT] = [
     "xxxxx     xxxxxx",
@@ -52,50 +53,23 @@ const MAP_DATA: [&str; MAP_HEIGHT] = [
     "xxxxx     xxxxxx",
 ];
 
-
-Caractere
-
-Significado
-
-Tipo de Tile
-
-x
-
-Muro
-
-Colisível
-
-o
-
-Chão
-
-Andável
-
-s
-
-Spawn
-
-Andável/Início do Jogador
-
-     
-
-Vazio
-
-Fora do Limite do Mapa (Colisível)
-
+Caractere	Significado	Tipo de Tile
+x	Muro	Colisível
+o	Chão	Andável
+s	Spawn	Andável / Início do Jogador
+(espaço)	Fora do limite do mapa	Colisível
 ⚙️ Como Rodar o Projeto
+🧰 Pré-requisitos
 
-Pré-requisitos
+Rust instalado (com cargo)
 
-Rust: Você precisa ter o ambiente de desenvolvimento Rust instalado (incluindo cargo).
+Instale ou atualize:
 
-Instale ou atualize: rustup update
+rustup update
 
-Assets: O projeto depende de arquivos de imagem que devem ser colocados na pasta assets no diretório raiz do projeto.
+🖼️ Estrutura de Assets Necessária
 
-Estrutura de Assets Necessária
-
-Crie a seguinte estrutura de pastas e coloque os arquivos (se tiver) nos locais indicados:
+Crie a pasta assets/ na raiz do projeto e mantenha a seguinte estrutura:
 
 .
 ├── Cargo.toml
@@ -115,10 +89,23 @@ Crie a seguinte estrutura de pastas e coloque os arquivos (se tiver) nos locais 
         └── Player.png
 
 
-Nota: Se você não possui os assets, o jogo irá falhar ao carregar. Certifique-se de ter todos os arquivos referenciados em GameAssets::load().
+⚠️ Atenção: o jogo depende desses arquivos.
+Caso algum esteja ausente, o carregamento falhará durante a inicialização (GameAssets::load()).
 
-Compilação e Execução
+🚀 Compilação e Execução
 
 No terminal, dentro do diretório do projeto:
 
 cargo run
+
+🧠 Observações
+
+Este projeto serve como base para estudo de:
+
+Organização de estados em jogos 2D
+
+Gerenciamento de recursos (assets) em Rust
+
+Movimentação baseada em tiles e colisão
+
+Uso da Macroquad para renderização, entrada e lógica de jogo
